@@ -20,7 +20,8 @@ namespace ProjectPOC.Pages
         IWebElement BtnSubmit => _driver.FindElement(By.Name("email_submit_button"));
         //IWebElement BtnRegisterNow => _driver.FindElement(By.LinkText("Register Now"));
         //a[@class='btn btn-lg btn-primary btn-block']
-        public IWebElement BtnRegisterNow => _driver.FindElement(By.XPath("a[@class='btn btn-lg btn-primary btn-block']"));
+        public IWebElement BtnRegisterNow => _driver.FindElement(By.XPath("//a[@class='btn btn-lg btn-primary btn-block']"));
+        
         public void LoginWithValidEmail()
         {
             TxtEmail.SendKeys(UserRegistrationPage.userEmail);
@@ -28,15 +29,27 @@ namespace ProjectPOC.Pages
             BtnSubmit.Click();
 
         }
+
+        public void Login(string email, string password)
+        {
+            TxtEmail.SendKeys(email);
+            TxtPwd.SendKeys(password);
+            BtnSubmit.Submit();
+        }
+
         public void ClickRegisterNow()
         {
             Thread.Sleep(3000);
-            //_driver.SwitchTo().Window(_driver.WindowHandles.Last());
-            var popup = _driver.WindowHandles[1]; // handler for the new tab
-            Assert.IsTrue(!string.IsNullOrEmpty(popup)); // tab was opened
-            Assert.AreEqual(_driver.SwitchTo().Window(popup).Url, "https://www.epocrates.com/liteRegistration.do?mode=display&ICID=website"); // url is OK  
+        
+            Console.WriteLine("Total windows on page : " + _driver.WindowHandles.Count);
+          
+            Console.WriteLine("Current window is : " + _driver.CurrentWindowHandle);
             _driver.SwitchTo().Window(_driver.WindowHandles[1]);
+            Thread.Sleep(1000);
+            
             BtnRegisterNow.Click();
+            Assert.AreEqual(_driver.SwitchTo().Window(_driver.WindowHandles[1]).Url, "https://www.epocrates.com/liteRegistration.do?mode=display&ICID=website"); // url is OK  
+
         }
         /*public LoginPage GoToLoginPage()
         {

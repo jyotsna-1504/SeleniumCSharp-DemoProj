@@ -1,5 +1,6 @@
 .vs/
 .vs/ProjectPOC/v16/TestStore/0/000.testlog
+.vs/*
 
 # Logs and databases #
 ######################
