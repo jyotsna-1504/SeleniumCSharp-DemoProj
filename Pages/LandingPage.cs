@@ -17,8 +17,9 @@ namespace ProjectPOC.Pages
 
         public LoginPage MoveToLoginPage()
         {
+            Thread.Sleep(2000);
             BtnContinue.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
             LnkSignOut.Click();
             return new LoginPage(_driver);
         }
