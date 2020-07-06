@@ -17,7 +17,8 @@ namespace ProjectPOC.Pages
         {
             Thread.Sleep(3000);
             LnkLogin.Click();
-            //_driver.SwitchTo().Window(_driver.WindowHandles.Last());
+            _driver.SwitchTo().Window(_driver.WindowHandles[1]);
+
 
             return new LoginPage(_driver);
         }
