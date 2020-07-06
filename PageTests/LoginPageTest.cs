@@ -47,7 +47,7 @@ namespace ProjectPOC.PageTests
             
         }
 
-        //[Test]
+        [Test]
         public void VerifyLoginWithAlreadyCreatedUser()
         {
 

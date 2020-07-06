@@ -67,6 +67,8 @@ namespace ProjectPOC.Utility
             //Store it in DataTable
             //DataTable resultTable = table["RegisterUser"];
             DataTable resultTable = table[SheetName];
+            excelReader.Close();
+            stream.Close();
             //return
             return resultTable;
         }
