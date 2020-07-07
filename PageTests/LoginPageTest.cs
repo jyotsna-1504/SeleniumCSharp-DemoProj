@@ -50,13 +50,12 @@ namespace ProjectPOC.PageTests
         [Test]
         public void VerifyLoginWithAlreadyCreatedUser()
         {
-
             LoginPage regNow = new LoginPage(driver);
             HomePageTest hmpg_test = new HomePageTest();
             hmpg_test.CheckNavigationToLoginPage();
             
             //string FileName = Environment.CurrentDirectory.ToString() + "\\ConfigFile\\TestDataFile.xlsx";
-            ExcelOperations.PopulateInCollection(FileName,"LoginUser");
+            //ExcelOperations.PopulateInCollection(FileName,"LoginUser");
             //Thread.Sleep(1000);
             regNow.Login(ExcelOperations.ReadData(1, "Email"), ExcelOperations.ReadData(1, "Password"));
             
@@ -71,7 +70,6 @@ namespace ProjectPOC.PageTests
             logPg.LoginWithoutSignout("test@120","System@123");
             String actualMsg = logPg.ReadMessage();
             Assert.AreEqual(actualMsg, "Your email and/or password is incorrect. Please try again.");
-
         }
     }
 }
